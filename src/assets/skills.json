@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Angular",
+    "description": "Cand develop in Angular"
+  },
+  {
+    "id": 2,
+    "name": "C#",
+    "description": "Cand develop in C#"
+  },
+  {
+    "id": 3,
+    "name": "C++",
+    "description": "Cand develop in C++"
+  }
+]
