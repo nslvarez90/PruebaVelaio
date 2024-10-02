@@ -9,6 +9,7 @@ import { PersonsService } from './services/persons.service';
 import { TaskService } from './services/task.service';
 import { SkillService } from './services/skills.service';
 import { HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: LocationStrategy,
