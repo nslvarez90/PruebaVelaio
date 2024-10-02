@@ -1,0 +1,8 @@
+.register-form{
+    max-width: 80%!important;
+}
+@media (max-width: 768px) {
+    .register-form{
+        max-width: 100%!important;
+    }
+}

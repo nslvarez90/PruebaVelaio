@@ -1,0 +1,60 @@
+<div class="register-form" *ngIf="isReady else loading" >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nombre de la tarea</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        />
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']">El nombre es requerido</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>Fecha Límite</label>
+        <input
+          type="date"
+          formControlName="limitDate"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['limitDate'].errors }"
+        />
+        <div *ngIf="submitted && f['limitDate'].errors" class="invalid-feedback">
+          <div *ngIf="f['limitDate'].errors['required']">La fecha limite es requerida </div>           
+          </div>          
+        </div>
+  
+      <div class="form-group">
+        <label>Involucrados</label>
+        <select class="form-select"
+         multiple
+         aria-label="multiple select example"
+         formControlName="persons"
+         [ngClass]="{ 'is-invalid': submitted && f['persons'].errors }">
+         <ng-container *ngFor="let person of listPersons;let i = index">            
+            <option value='{{i}}'>{{person.name}} </option>           
+        </ng-container>
+          </select>
+      
+        <div *ngIf="submitted && f['persons'].errors" class="invalid-feedback">
+          <div *ngIf="f['persons'].errors['required']">Es necesarario al menos un involucrado</div>
+        </div>
+      </div>
+  
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary me-3">Crear Tarea</button>
+        <button
+          type="button"
+          (click)="onReset()"
+          class="btn btn-warning float-right"
+         >
+          Limpiar
+        </button>
+      </div>
+    </form>
+  </div>
+  <ng-template #loading>
+    <div>Loading...</div>
+   </ng-template>

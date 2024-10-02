@@ -1,0 +1,45 @@
+<div class="register-form" *ngIf="isReady else loading" >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nombre de la Habilidad</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        />
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']">El nombre es requerido</div>
+        </div>
+      </div>
+  
+     
+      <div class="form-group">
+        <label>Descripcion de la Habilidad</label>
+        <input
+          type="text"
+          formControlName="description"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+        />
+      
+        <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+          <div *ngIf="f['description'].errors['required']">Es necesarario dejar la descripcion</div>
+        </div>
+      </div>
+  
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary me-3">Crear Habilidad</button>
+        <button
+          type="button"
+          (click)="onReset()"
+          class="btn btn-warning float-right"
+         >
+          Limpiar
+        </button>
+      </div>
+    </form>
+  </div>
+  <ng-template #loading>
+    <div>Loading...</div>
+   </ng-template>
